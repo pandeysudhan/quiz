@@ -1,0 +1,40 @@
+{
+  "points": [
+    {
+      "forReset": 0,
+      "G": "A",
+      "pts": 0
+    },
+    {
+      "forReset": 1,
+      "G": "B",
+      "pts": 0
+    },
+    {
+      "forReset": 2,
+      "G": "C",
+      "pts": 0
+    },
+    {
+      "forReset": 3,
+      "G": "D",
+      "pts": 2
+    },
+    {
+      "forReset": 4,
+      "G": "E",
+      "pts": 1
+    },
+    {
+      "forReset": 5,
+      "G": "F",
+      "pts": 1
+    },
+    {
+      "name": "G",
+      "whichGroupToGivePoints": "A",
+      "rotation": "A",
+      "whichGroupToChooseQuestions": "F"
+    }
+  ]
+}
