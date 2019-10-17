@@ -1,55 +1,14 @@
 <!DOCTYPE html>
+
 <html>
   <head>
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <style type="text/css">
-      .hbtn {
-        position: relative;
-        box-sizing: border-box;
-        display: inline-block;
-        overflow: hidden;
-        padding: 8px 20px;
-        margin: 0px 3px 6px;
-        text-align: center;
-        border: 2px solid rgb(143, 240, 143);
-        text-decoration: none;
-        color: rgb(29, 26, 26);
-        white-space: nowrap;
-        z-index: 0;
-      }
+.questionChoice{
+  height: 30%;
+}
 
-      .hbtn i {
-        padding-right: 8px;
-      }
-
-      .questionChoice::before {
-        position: absolute;
-        content: "";
-        background: rgb(143, 240, 143);
-        transition-duration: 0.3s;
-        z-index: -1;
-        top: 0px;
-        right: auto;
-        bottom: auto;
-        left: 0px;
-        width: 0px;
-        height: 100%;
-        opacity: 1;
-        border: 2px solid rgb(143, 240, 143);
-      }
-
-      .questionChoice:hover::before {
-        width: 100%;
-        height: 100%;
-        opacity: 1;
-      }
-
-      .questionChoice:hover {
-        color: rgb(0, 0, 0);
-        background: rgb(255, 255, 255);
-        transition: all 0.3s ease 0s;
-      }
-
-      #questionChoices {
+      #questionChoicesArea {
         height: 20vh;
         background: rgb(231, 95, 16);
       }
@@ -81,7 +40,7 @@
     <title>Just a Page</title>
   </head>
   <body style="background-color:whitesmoke">
-    <div id="questionChoices"></div>
+    <div id="questionChoicesArea"></div>
 
     <button id="editPoints" , onclick="createWindow()">Edit Points</button>
     <br />

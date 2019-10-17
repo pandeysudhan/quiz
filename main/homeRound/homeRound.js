@@ -59,7 +59,7 @@ function setQuestionChoices() {
     question[i].innerHTML = addQN + questionNumber[i];
     question[i].id = "QN" + i;
     //to match the class name from internet
-    question[i].className = "hbtn questionChoice";
+    question[i].className = "questionChoice";
     if (datas[i - 1].status == "asked") {
       question[i].style.opacity = 0;
     }
@@ -84,7 +84,7 @@ function setQuestionChoices() {
       QN(this.id.replace("QN", ""));
     };
 
-    document.getElementById("questionChoices").appendChild(question[i]);
+    document.getElementById("questionChoicesArea").appendChild(question[i]);
   }
 }
 function resetQuestions() {
