@@ -28,13 +28,13 @@
     {
       "forReset": 5,
       "G": "F",
-      "pts": 1
+      "pts": 2
     },
     {
       "name": "G",
-      "whichGroupToGivePoints": "A",
+      "whichGroupToGivePoints": "E",
       "rotation": "A",
-      "whichGroupToChooseQuestions": "F"
+      "whichGroupToChooseQuestions": "E"
     }
   ]
 }

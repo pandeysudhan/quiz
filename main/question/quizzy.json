@@ -8,7 +8,7 @@
     {
       "QN": "2",
       "question": "What is your second name?",
-      "status": "unasked"
+      "status": "asked"
     },
     {
       "QN": "3",
@@ -39,11 +39,11 @@
       "QN": "8",
       "question": "What is your eight name?",
       "status": "unasked"
-    },{
-     "QN": "9",
+    },
+    {
+      "QN": "9",
       "question": "What is your ninth name?",
       "status": ""
     }
-
   ]
 }
