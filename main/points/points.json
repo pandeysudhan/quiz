@@ -32,8 +32,9 @@
     },
     {
       "name": "G",
-      "whichGroupToGivePoints": "F",
       "rotation": "C",
+      "whichGroupToGivePoints": "F",
+
       "whichGroupToChooseQuestions": "E"
     }
   ]
