@@ -1,13 +1,14 @@
 {
-  "quizzy": [{
+  "quizzy": [
+    {
       "QN": "1",
       "question": "What is your first name?",
-      "status": "asked"
+      "status": "unasked"
     },
     {
       "QN": "2",
       "question": "What is your second name?",
-      "status": "asked"
+      "status": "unasked"
     },
     {
       "QN": "3",
@@ -17,7 +18,7 @@
     {
       "QN": "4",
       "question": "What is your fourth name?",
-      "status": "unasked"
+      "status": "asked"
     },
     {
       "QN": "5",
@@ -107,7 +108,7 @@
     {
       "QN": "22",
       "question": "What is your fourteen name?",
-      "status": "asked"
+      "status": "unasked"
     },
     {
       "QN": "23",

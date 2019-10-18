@@ -2,13 +2,22 @@ const db = require("electron-db");
 const path = require("path");
 const questionLocation = path.join(__dirname, "");
 const pointsLocation = path.join(__dirname, "../points/");
+var abcdef;
+
+
+
+
+
+
 //for respective passes
 var passTimer = [20, 15, 10, 10, 10, 10];
 
 //how many times the question is passed
 var numberOfPasses = 0;
 if (numberOfPasses == 0) {
-  timerValue = passTimer[0];
+  totalTimerValue = passTimer[0];
+  abcdef=totalTimerValue
+
 }
 //timer for the typeWriter
 var questionStringPosition = 0;
@@ -63,7 +72,7 @@ function getQuestion() {
 
       //question is in the first place of data and other are the non useful information from database
       question = result[0];
-      finalQuestion = question.question;
+      finalQuestion = "Q.N. "+queryString+" "+question.question;
       console.log(finalQuestion);
     }
   );
@@ -228,11 +237,17 @@ function pass() {
   //remove the times up message of previous group
   document.getElementById("timeUp").innerHTML = "TIMES UP";
   numberOfPasses = numberOfPasses + 1;
-  timerValue = passTimer[numberOfPasses];
+  totalTimerValue = passTimer[numberOfPasses];
+  abcdef=totalTimerValue
+
+  console.log("---------");
+  console.log("---------");
+  console.log("---------");
+console.log(abcdef);
   if (numberOfPasses <= 5) {
     //change the time for passed questions
     if (pass == 1) {
-      timerValue = firstpass;
+      totalTimerValue = firstpass;
     }
     setNextGroupToChooseQuestion();
 
@@ -394,19 +409,84 @@ function groupToDisplay() {
   document.getElementById("GroupName").innerHTML = currentGroupToGivePoints;
 }
 function timer() {
-  if (timerValue < 0) {
+var timeramount;
+  if (totalTimerValue < 0) {
+    
     console.log("---------");
     document.getElementById("timeUp").innerHTML = "TIMES UP";
     console.log("Times Up");
     console.log("---------");
     pass();
   }
-  console.log(timerValue);
+  console.log(totalTimerValue);
 
   setTimeout(function() {
     timer();
   }, 1000);
 
-  document.getElementById("Timer").innerHTML = timerValue.toString();
-  timerValue = timerValue - 1;
+  timerpp= document.getElementById("progressFront")
+  console.log(abcdef);
+  timeramount= totalTimerValue/abcdef*100
+if (timeramount<=100 && timeramount>90){
+  timerpp.style.background="#46eb34"
+  document.getElementById("progressFront").innerHTML = totalTimerValue.toString();
+
+}
+if (timeramount<=90 && timeramount>80){
+  timerpp.style.background="#8feb34"
+  document.getElementById("progressFront").innerHTML = totalTimerValue.toString();
+
+}
+if (timeramount<80 && timeramount>70){
+  timerpp.style.background="#b1eb34"
+  document.getElementById("progressFront").innerHTML = totalTimerValue.toString();
+
+}
+if (timeramount<=70 && timeramount>60){
+  timerpp.style.background="#c3eb34"
+  document.getElementById("progressFront").innerHTML = totalTimerValue.toString();
+
+}
+if (timeramount<=60 && timeramount>50){
+  timerpp.style.background="#ebe534"
+  document.getElementById("progressFront").innerHTML = totalTimerValue.toString();
+
+}
+if (timeramount<=50 && timeramount>40){
+  timerpp.style.background="#ebc034"
+  document.getElementById("progressFront").innerHTML = totalTimerValue.toString();
+
+}
+
+if (timeramount<=40 && timeramount>30){
+  timerpp.style.background="#eba834"
+  document.getElementById("progressFront").innerHTML = totalTimerValue.toString();
+
+}if (timeramount<=30 && timeramount>20){
+  timerpp.style.background="#eb9334"
+  document.getElementById("progressFront").innerHTML = totalTimerValue.toString();
+
+}
+if (timeramount<=20 && timeramount>10){
+  timerpp.style.background="#eb7434"
+  document.getElementById("progressFront").innerHTML = totalTimerValue.toString();
+
+}
+if (timeramount<=10 && timeramount>0){
+  timerpp.style.background="#eb4c34"
+  document.getElementById("progressFront").innerHTML = totalTimerValue.toString();
+
+}
+
+  timerpp.style.width=timeramount.toString()+"%"
+
+
+
+
+
+
+
+  totalTimerValue = totalTimerValue - 1;
+
+
 }

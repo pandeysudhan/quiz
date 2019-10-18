@@ -8,16 +8,25 @@ const electron = require("electron");
 const BrowserWindow = electron.remote.BrowserWindow;
 let win;
 var datas;
+setRotation();
 
 setQuestionChoices();
 
 function setRotation() {
+  console.log("--------");
+  console.log("--------");
+
+  console.log("--------");
   if (document.getElementById("ClockWise").checked == true) {
+    document.getElementById("rotationValue").innerHTML = "Rotation: ClockWise";
+
     db.updateRow(
       "points",
-      pointsLocation, {
+      pointsLocation,
+      {
         name: "G"
-      }, {
+      },
+      {
         rotation: "C"
       },
       (succ, msg) => {
@@ -27,11 +36,15 @@ function setRotation() {
       }
     );
   } else if (document.getElementById("AntiClockWise").checked == true) {
+    document.getElementById("rotationValue").innerHTML =
+      "Rotation: Anti-ClockWise";
     db.updateRow(
       "points",
-      pointsLocation, {
+      pointsLocation,
+      {
         name: "G"
-      }, {
+      },
+      {
         rotation: "A"
       },
       (succ, msg) => {
@@ -44,6 +57,7 @@ function setRotation() {
 }
 
 function setQuestionChoices() {
+  setRotation();
   db.getAll("quizzy", questionLocation, (succ, data) => {
     console.log(succ);
     console.log(data);
@@ -60,7 +74,7 @@ function setQuestionChoices() {
   for (i = 1; i <= datas.length; i++) {
     question[i] = document.createElement("button");
     questionNumber[i] = datas[i - 1].QN;
-    addQN = "Q.N. ";
+    addQN = "Q.";
     question[i].innerHTML = addQN + questionNumber[i];
     question[i].id = "QN" + i;
     //to match the class name from internet
@@ -74,9 +88,11 @@ function setQuestionChoices() {
       queNo = this.innerHTML.replace(addQN, "");
       db.updateRow(
         "quizzy",
-        questionLocation, {
+        questionLocation,
+        {
           QN: queNo
-        }, {
+        },
+        {
           status: "asked"
         },
         (succ, msg) => {
@@ -104,9 +120,11 @@ function resetQuestions() {
 
     db.updateRow(
       "quizzy",
-      questionLocation, {
+      questionLocation,
+      {
         QN: i.toString()
-      }, {
+      },
+      {
         status: "unasked"
       },
       (succ, msg) => {
@@ -175,7 +193,7 @@ function setPoints() {
 
   currentGroup = points[6].whichGroupToChooseQuestions;
   //highlights the group to choose question
-  document.getElementById(currentGroup + "H").style.backgroundColor = "green";
+  document.getElementById(currentGroup + "H").style.backgroundColor = "#7FF858";
 
   //it sets the value of rotation initially
   if (points[6].rotation == "C") {
@@ -194,9 +212,11 @@ function reset() {
   for (var i = 0; i <= 5; i++) {
     db.updateRow(
       "points",
-      pointsLocation, {
+      pointsLocation,
+      {
         forReset: i
-      }, {
+      },
+      {
         pts: 0
       },
       (succ, msg) => {
@@ -209,9 +229,11 @@ function reset() {
 
   db.updateRow(
     "points",
-    pointsLocation, {
+    pointsLocation,
+    {
       name: "G"
-    }, {
+    },
+    {
       whichGroupToChooseQuestions: "A"
     },
     (succ, msg) => {
@@ -229,9 +251,11 @@ ipc.on("UpdateThePoints", function(event, args) {
 
   db.updateRow(
     "points",
-    pointsLocation, {
+    pointsLocation,
+    {
       G: "A"
-    }, {
+    },
+    {
       pts: args.A
     },
     (succ, msg) => {
@@ -242,9 +266,11 @@ ipc.on("UpdateThePoints", function(event, args) {
   );
   db.updateRow(
     "points",
-    pointsLocation, {
+    pointsLocation,
+    {
       G: "B"
-    }, {
+    },
+    {
       pts: args.B
     },
     (succ, msg) => {
@@ -255,9 +281,11 @@ ipc.on("UpdateThePoints", function(event, args) {
   );
   db.updateRow(
     "points",
-    pointsLocation, {
+    pointsLocation,
+    {
       G: "C"
-    }, {
+    },
+    {
       pts: args.C
     },
     (succ, msg) => {
@@ -269,9 +297,11 @@ ipc.on("UpdateThePoints", function(event, args) {
 
   db.updateRow(
     "points",
-    pointsLocation, {
+    pointsLocation,
+    {
       G: "D"
-    }, {
+    },
+    {
       pts: args.D
     },
     (succ, msg) => {
@@ -282,9 +312,11 @@ ipc.on("UpdateThePoints", function(event, args) {
   );
   db.updateRow(
     "points",
-    pointsLocation, {
+    pointsLocation,
+    {
       G: "E"
-    }, {
+    },
+    {
       pts: args.E
     },
     (succ, msg) => {
@@ -295,9 +327,11 @@ ipc.on("UpdateThePoints", function(event, args) {
   );
   db.updateRow(
     "points",
-    pointsLocation, {
+    pointsLocation,
+    {
       G: "F"
-    }, {
+    },
+    {
       pts: args.F
     },
     (succ, msg) => {
@@ -349,9 +383,11 @@ function next() {
   );
   db.updateRow(
     "points",
-    pointsLocation, {
+    pointsLocation,
+    {
       name: "G"
-    }, {
+    },
+    {
       whichGroupToChooseQuestions: nextGroupToChooseQuestions
     },
     (succ, msg) => {
