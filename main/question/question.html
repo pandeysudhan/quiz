@@ -1,25 +1,64 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Question</title>
-  </head>
 
-  <body>
-    <button id="question"></button>
+<head>
+  <title>Question</title>
+  <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css" />
 
-    <button id="back" , onclick="goBackWithoutAsking()">back</button>
-    <button id="correct" , onclick="correct()">C</button>
-    <button id="wrong" , onclick="wrong()">W</button>
-    <button id="Pass" , onclick="pass()">P</button>
+  <style>
+    body {
+      background: black !important;
+    }
 
-    <Div id="correctORwrong"></Div>
+    .buttonType {
+      height: 100px;
+      width: 100px;
+    }
 
-    <div>
-      Group
-      <button id="GroupName">null</button>
+    .questionArea {
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="card questionArea">
+      <div class="card-body questionArea" id="question"></div>
     </div>
-    <button id="Timer"></button>
-    <div id="timeUp"></div>
-  </body>
-  <script src="question.js"></script>
+
+    <div class="row">
+      <div class="col">
+        <button id="back" , onclick="goBackWithoutAsking()" class="btn btn-dark buttonType">
+          back
+        </button>
+      </div>
+      <div class="col">
+        <button id="correct" , class="btn btn-primary buttonType" , onclick="correct()"></button>
+      </div>
+      <div class="col">
+        <button id="wrong" , onclick="wrong()" class="btn btn-danger buttonType">
+          W
+        </button>
+      </div>
+      <div class="col">
+        <button id="Pass" , onclick="pass()" class="btn btn-secondary buttonType">
+          P
+        </button>
+      </div>
+    </div>
+  </div>
+  <span class="glyphicon glyphicon-search" style="backgroundColor:red"></span>
+
+  <Div id="correctORwrong"></Div>
+
+  <div>
+    Group
+    <button id="GroupName">null</button>
+  </div>
+  <button id="Timer"></button>
+  <div id="timeUp"></div>
+</body>
+<script src="question.js"></script>
+
 </html>

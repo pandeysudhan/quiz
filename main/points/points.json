@@ -18,22 +18,22 @@
     {
       "forReset": 3,
       "G": "D",
-      "pts": 2
+      "pts": 0
     },
     {
       "forReset": 4,
       "G": "E",
-      "pts": 1
+      "pts": 0
     },
     {
       "forReset": 5,
       "G": "F",
-      "pts": 2
+      "pts": 0
     },
     {
       "name": "G",
-      "whichGroupToGivePoints": "E",
-      "rotation": "A",
+      "whichGroupToGivePoints": "F",
+      "rotation": "C",
       "whichGroupToChooseQuestions": "E"
     }
   ]
