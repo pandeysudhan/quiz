@@ -5,12 +5,32 @@
     <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <style type="text/css">
 .questionChoice{
-  height: 30%;
+  height: 15%;
+  width: 12%; /* 12*6 =72 + 28 from margin*/
+  margin-left: 2% ;
+  margin-right: 2% ;/* total margin 28*/
+
+  margin-bottom:2% ;
+}
+.questionChoice:hover{
+  background-color:green;
+}
+
+/*
+adding margin to the terminal choices
+*/
+#QN6,#QN12,#QN18,#QN24,#QN30{
+  margin-right: 4%
+}
+
+#QN1,#QN7,#QN13,#QN19,#QN25{
+  margin-left: 4%
 }
 
       #questionChoicesArea {
-        height: 20vh;
-        background: rgb(231, 95, 16);
+        overflow: hidden;
+        height: 60vh;
+        background: #400239;
       }
       table {
         font-family: arial, sans-serif;
@@ -35,13 +55,17 @@
         min-width: 100%;
         margin: 0;
         padding: 0;
+
+        color: green;
       }
     </style>
     <title>Just a Page</title>
   </head>
-  <body style="background-color:whitesmoke">
+  <body style="background-color:black">
+    
+<div class="card" >
     <div id="questionChoicesArea"></div>
-
+</div>
     <button id="editPoints" , onclick="createWindow()">Edit Points</button>
     <br />
 

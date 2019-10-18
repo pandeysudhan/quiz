@@ -15,9 +15,11 @@ function setRotation() {
   if (document.getElementById("ClockWise").checked == true) {
     db.updateRow(
       "points",
-      pointsLocation,
-      { name: "G" },
-      { rotation: "C" },
+      pointsLocation, {
+        name: "G"
+      }, {
+        rotation: "C"
+      },
       (succ, msg) => {
         // succ - boolean, tells if the call is successful
         console.log("Success: " + succ);
@@ -27,9 +29,11 @@ function setRotation() {
   } else if (document.getElementById("AntiClockWise").checked == true) {
     db.updateRow(
       "points",
-      pointsLocation,
-      { name: "G" },
-      { rotation: "A" },
+      pointsLocation, {
+        name: "G"
+      }, {
+        rotation: "A"
+      },
       (succ, msg) => {
         // succ - boolean, tells if the call is successful
         console.log("Success: " + succ);
@@ -38,6 +42,7 @@ function setRotation() {
     );
   }
 }
+
 function setQuestionChoices() {
   db.getAll("quizzy", questionLocation, (succ, data) => {
     console.log(succ);
@@ -59,7 +64,7 @@ function setQuestionChoices() {
     question[i].innerHTML = addQN + questionNumber[i];
     question[i].id = "QN" + i;
     //to match the class name from internet
-    question[i].className = "questionChoice";
+    question[i].className = "questionChoice btn btn-primary";
     if (datas[i - 1].status == "asked") {
       question[i].style.opacity = 0;
     }
@@ -69,9 +74,11 @@ function setQuestionChoices() {
       queNo = this.innerHTML.replace(addQN, "");
       db.updateRow(
         "quizzy",
-        questionLocation,
-        { QN: queNo },
-        { status: "asked" },
+        questionLocation, {
+          QN: queNo
+        }, {
+          status: "asked"
+        },
         (succ, msg) => {
           // succ - boolean, tells if the call is successful
           console.log("Success: " + succ);
@@ -87,6 +94,7 @@ function setQuestionChoices() {
     document.getElementById("questionChoicesArea").appendChild(question[i]);
   }
 }
+
 function resetQuestions() {
   for (i = 1; i <= datas.length; i++) {
     console.log("---------");
@@ -96,9 +104,11 @@ function resetQuestions() {
 
     db.updateRow(
       "quizzy",
-      questionLocation,
-      { QN: i.toString() },
-      { status: "unasked" },
+      questionLocation, {
+        QN: i.toString()
+      }, {
+        status: "unasked"
+      },
       (succ, msg) => {
         // succ - boolean, tells if the call is successful
         console.log("Success: " + succ);
@@ -108,6 +118,7 @@ function resetQuestions() {
     document.getElementById("QN" + i).style.opacity = 1;
   }
 }
+
 function createWindow() {
   // Create the browser window.
   win = new BrowserWindow({
@@ -144,6 +155,7 @@ function createWindow() {
 }
 
 setPoints();
+
 function setPoints() {
   db.getAll("points", pointsLocation, (succ, data) => {
     console.log(succ);
@@ -182,9 +194,11 @@ function reset() {
   for (var i = 0; i <= 5; i++) {
     db.updateRow(
       "points",
-      pointsLocation,
-      { forReset: i },
-      { pts: 0 },
+      pointsLocation, {
+        forReset: i
+      }, {
+        pts: 0
+      },
       (succ, msg) => {
         // succ - boolean, tells if the call is successful
         console.log("Success: " + succ);
@@ -195,9 +209,11 @@ function reset() {
 
   db.updateRow(
     "points",
-    pointsLocation,
-    { name: "G" },
-    { whichGroupToChooseQuestions: "A" },
+    pointsLocation, {
+      name: "G"
+    }, {
+      whichGroupToChooseQuestions: "A"
+    },
     (succ, msg) => {
       // succ - boolean, tells if the call is successful
       console.log("Success: " + succ);
@@ -213,9 +229,11 @@ ipc.on("UpdateThePoints", function(event, args) {
 
   db.updateRow(
     "points",
-    pointsLocation,
-    { G: "A" },
-    { pts: args.A },
+    pointsLocation, {
+      G: "A"
+    }, {
+      pts: args.A
+    },
     (succ, msg) => {
       // succ - boolean, tells if the call is successful
       console.log("Success: " + succ);
@@ -224,9 +242,11 @@ ipc.on("UpdateThePoints", function(event, args) {
   );
   db.updateRow(
     "points",
-    pointsLocation,
-    { G: "B" },
-    { pts: args.B },
+    pointsLocation, {
+      G: "B"
+    }, {
+      pts: args.B
+    },
     (succ, msg) => {
       // succ - boolean, tells if the call is successful
       console.log("Success: " + succ);
@@ -235,9 +255,11 @@ ipc.on("UpdateThePoints", function(event, args) {
   );
   db.updateRow(
     "points",
-    pointsLocation,
-    { G: "C" },
-    { pts: args.C },
+    pointsLocation, {
+      G: "C"
+    }, {
+      pts: args.C
+    },
     (succ, msg) => {
       // succ - boolean, tells if the call is successful
       console.log("Success: " + succ);
@@ -247,9 +269,11 @@ ipc.on("UpdateThePoints", function(event, args) {
 
   db.updateRow(
     "points",
-    pointsLocation,
-    { G: "D" },
-    { pts: args.D },
+    pointsLocation, {
+      G: "D"
+    }, {
+      pts: args.D
+    },
     (succ, msg) => {
       // succ - boolean, tells if the call is successful
       console.log("Success: " + succ);
@@ -258,9 +282,11 @@ ipc.on("UpdateThePoints", function(event, args) {
   );
   db.updateRow(
     "points",
-    pointsLocation,
-    { G: "E" },
-    { pts: args.E },
+    pointsLocation, {
+      G: "E"
+    }, {
+      pts: args.E
+    },
     (succ, msg) => {
       // succ - boolean, tells if the call is successful
       console.log("Success: " + succ);
@@ -269,9 +295,11 @@ ipc.on("UpdateThePoints", function(event, args) {
   );
   db.updateRow(
     "points",
-    pointsLocation,
-    { G: "F" },
-    { pts: args.F },
+    pointsLocation, {
+      G: "F"
+    }, {
+      pts: args.F
+    },
     (succ, msg) => {
       // succ - boolean, tells if the call is successful
       console.log("Success: " + succ);
@@ -287,6 +315,7 @@ ipc.on("UpdateThePoints", function(event, args) {
   document.getElementById("E").innerHTML = args.E;
   document.getElementById("F").innerHTML = args.F;
 });
+
 function next() {
   var datas;
   //get the fresh copy of points database
@@ -320,9 +349,11 @@ function next() {
   );
   db.updateRow(
     "points",
-    pointsLocation,
-    { name: "G" },
-    { whichGroupToChooseQuestions: nextGroupToChooseQuestions },
+    pointsLocation, {
+      name: "G"
+    }, {
+      whichGroupToChooseQuestions: nextGroupToChooseQuestions
+    },
     (succ, msg) => {
       // succ - boolean, tells if the call is successful
       console.log("Success: " + succ);
@@ -360,6 +391,7 @@ function convertGroupNameToGroupNumber(groupNameToBeConverted) {
     return 5;
   }
 }
+
 function convertGroupNumberToGroupName(groupNumberToBeConverted) {
   if (groupNumberToBeConverted == 0) {
     return "A";

@@ -1,69 +1,64 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Question</title>
-    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
-<style>
-body{
-  background: black !important;
-}
-.buttonType{
-  height: 100px;
-  width: 50px;
 
-}
-.questionArea{
-  width :100%;
+<head>
+  <title>Question</title>
+  <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css" />
 
+  <style>
+    body {
+      background: black !important;
+    }
 
+    .buttonType {
+      height: 100px;
+      width: 100px;
+    }
 
-}
+    .questionArea {
+      width: 100%;
+    }
+  </style>
+</head>
 
-</style>
-  </head>
+<body>
+  <div class="container">
+    <div class="card questionArea">
+      <div class="card-body questionArea" id="question"></div>
+    </div>
 
-  <body>
-
-    <div class="container">
-
-        <div class="card questionArea">
-        <div class="card-body questionArea" id="question">
-
-        </div>
-        </div>
-
-
-      <div class="row">
-        <div class="col">
-          <button id="back" , onclick="goBackWithoutAsking()" class="btn btn-dark buttonType">back</button>
+    <div class="row">
+      <div class="col">
+        <button id="back" , onclick="goBackWithoutAsking()" class="btn btn-dark buttonType">
+          back
+        </button>
       </div>
       <div class="col">
-        <button id="correct" , class="btn btn-primary buttonType" , onclick="correct()">C</button>
+        <button id="correct" , class="btn btn-primary buttonType" , onclick="correct()"></button>
       </div>
       <div class="col">
-        <button id="wrong" , onclick="wrong()" class="btn btn-danger buttonType">W</button>
+        <button id="wrong" , onclick="wrong()" class="btn btn-danger buttonType">
+          W
+        </button>
+      </div>
+      <div class="col">
+        <button id="Pass" , onclick="pass()" class="btn btn-secondary buttonType">
+          P
+        </button>
+      </div>
     </div>
-    <div class="col">
-      <button id="Pass" , onclick="pass()" class="btn btn-secondary buttonType">P</button>
-    </div>
-    </div>
-</div>
+  </div>
+  <span class="glyphicon glyphicon-search" style="backgroundColor:red"></span>
 
+  <Div id="correctORwrong"></Div>
 
+  <div>
+    Group
+    <button id="GroupName">null</button>
+  </div>
+  <button id="Timer"></button>
+  <div id="timeUp"></div>
+</body>
+<script src="question.js"></script>
 
-
-
-
-
-
-    <Div id="correctORwrong"></Div>
-
-    <div>
-      Group
-      <button id="GroupName">null</button>
-    </div>
-    <button id="Timer"></button>
-    <div id="timeUp"></div>
-  </body>
-  <script src="question.js"></script>
 </html>
