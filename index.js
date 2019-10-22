@@ -1,6 +1,7 @@
 const { app, BrowserWindow } = require("electron");
 const ipc = require("electron").ipcMain;
 var path = require("path");
+const remote = require("electron").remote;
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -8,16 +9,15 @@ let win;
 
 function createWindow() {
   // Create the browser window.
-  win = new BrowserWindow({
-    width: 800,
-    height: 600,
+  let win = new BrowserWindow({
+    enableRemoteModule: true,
     webPreferences: {
       nodeIntegration: true
-    }
+    },
+    backgroundColor: "#000000"
   });
-
   // and load the index.html of the app.
-  win.loadFile("main/mainPage/mainPage.html");
+  win.loadFile("mainPage/mainPage.html");
 
   // Open the DevTools.
   //win.webContents.openDevTools()
@@ -56,5 +56,12 @@ app.on("activate", () => {
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
 ipc.on("UpdatedPoints", function(event, args) {
-  win.webContents.send("UpdateThePoints", args);
+  var windowObjectArray = BrowserWindow.getAllWindows();
+  for (var i = 0, len = windowObjectArray.length; i < len; i++) {
+    var windowObject = windowObjectArray[i];
+    if (windowObject.webContents.getTitle() == "Oxford Quiz") {
+      windowObject.webContents.send("UpdateThePoints", args);
+      console.log(windowObject.webContents.getTitle());
+    }
+  }
 });

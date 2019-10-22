@@ -1,14 +1,19 @@
 const db = require("electron-db");
 const path = require("path");
 const questionLocation = path.join(__dirname, "");
-const pointsLocation = path.join(__dirname, "../points/");
+const pointsLocation = path.join(__dirname, "../../points/");
+var abcdef;
+var pointsToGive = "10";
+var typingCompleted;
 //for respective passes
-var passTimer = [20, 15, 10, 10, 10, 10];
+var passTimer = [1000, 1600, 1100, 1100, 1100, 1100]; //time in seconds *100
+//add 1 in the time so that when passed the time starts at one below
 
 //how many times the question is passed
 var numberOfPasses = 0;
 if (numberOfPasses == 0) {
-  timerValue = passTimer[0];
+  var totalTimerValue = passTimer[0];
+  abcdef = totalTimerValue;
 }
 //timer for the typeWriter
 var questionStringPosition = 0;
@@ -41,15 +46,17 @@ var rotation;
 //all data of the points section
 var datas;
 //run the required initial function
-timer();
 
+queryString = decodeURIComponent(window.location.search);
+queryString = queryString.substring(1);
+console.log("********");
+console.log(queryString);
+
+console.log("********");
 runRequiredFunctions();
 
 //get the questions
 function getQuestion() {
-  queryString = decodeURIComponent(window.location.search);
-  queryString = queryString.substring(1);
-
   db.getRows(
     "quizzy",
     questionLocation,
@@ -63,7 +70,7 @@ function getQuestion() {
 
       //question is in the first place of data and other are the non useful information from database
       question = result[0];
-      finalQuestion = question.question;
+      finalQuestion = "Q.N. " + queryString + ": " + question.question;
       console.log(finalQuestion);
     }
   );
@@ -72,32 +79,40 @@ function getQuestion() {
 }
 //the asnwer is correct
 async function correct() {
-  setNextGroupToChooseQuestion();
-  settingCurrentAndNextGroup();
-  console.log(currentGroupNumberToGivePoints);
+  if (typingCompleted == true) {
+    setNextGroupToChooseQuestion();
+    settingCurrentAndNextGroup();
+    console.log(currentGroupNumberToGivePoints);
 
-  if (repeated == false) {
-    //update the group points
-    db.updateRow(
-      "points",
-      pointsLocation,
-      { G: currentGroupToGivePoints },
-      { pts: points[currentGroupNumberToGivePoints].pts + 1 },
-      (succ, msg) => {
-        // succ - boolean, tells if the call is successful
-        console.log("Success: " + succ);
-        console.log("Message: " + msg);
+    if (repeated == false) {
+      //update the group points
+      if (numberOfPasses >= 1) {
+        pointsToGive = 5;
       }
-    );
+      db.updateRow(
+        "points",
+        pointsLocation,
+        { G: currentGroupToGivePoints },
+        {
+          pts:
+            parseInt(points[currentGroupNumberToGivePoints].pts) +
+            parseInt(pointsToGive)
+        },
+        (succ, msg) => {
+          // succ - boolean, tells if the call is successful
+          console.log("Success: " + succ);
+          console.log("Message: " + msg);
+        }
+      );
 
-    displayWhetherCorrectOrWrong("Congratulations! You're Correct"),
       setTimeout(function() {}, 3000);
-    await sleep(500);
-    back();
-    repeated = true;
+      await sleep(500);
+      window.location.href =
+        "correctAnswer.html?" + currentGroupToGivePoints + queryString;
+      repeated = true;
+    }
   }
 }
-
 function setCurrentGroupToChooseQuestionsAsTheGroupToGivePoints() {
   var groupToChooseQuestion;
 
@@ -220,20 +235,66 @@ function getPoints() {
   });
 }
 function wrong() {
-  pass();
-  displayWhetherCorrectOrWrong("Sorry!You're Incorrect");
+  if (typingCompleted == true) {
+    pass();
+    displayWhetherCorrectOrWrong("Incorrect");
+  }
 }
 //question is passed
-function pass() {
+async function pass() {
+  if (typingCompleted == true) {
+    displayWhetherCorrectOrWrong("Pass");
+    //remove the times up message of previous group
+
+    await sleep(1000);
+    document.getElementById("conditionOfQuestion").style.display = "none";
+
+    numberOfPasses = numberOfPasses + 1;
+    totalTimerValue = passTimer[numberOfPasses];
+    abcdef = totalTimerValue;
+
+    console.log("---------");
+    console.log("---------");
+    console.log("---------");
+    console.log(abcdef);
+
+    if (numberOfPasses <= 5) {
+      //change the time for passed questions
+
+      setNextGroupToChooseQuestion();
+
+      //updates next group in database
+      updateNextGroupToGivePointsInDatabase();
+
+      // to get new group information
+      getPoints();
+
+      //sets the current group as obtained from above
+      setCurrentGroup();
+
+      //sets next group as obtained information from above
+      setCurrentGroupNumberAndNextGroup();
+    }
+    if (numberOfPasses > 5) {
+      audience();
+    }
+  }
+}
+async function timesup() {
   //remove the times up message of previous group
-  document.getElementById("timeUp").innerHTML = "TIMES UP";
+
   numberOfPasses = numberOfPasses + 1;
-  timerValue = passTimer[numberOfPasses];
+  totalTimerValue = passTimer[numberOfPasses];
+  abcdef = totalTimerValue;
+
+  console.log("---------");
+  console.log("---------");
+  console.log("---------");
+  console.log(abcdef);
+
   if (numberOfPasses <= 5) {
     //change the time for passed questions
-    if (pass == 1) {
-      timerValue = firstpass;
-    }
+
     setNextGroupToChooseQuestion();
 
     //updates next group in database
@@ -247,7 +308,9 @@ function pass() {
 
     //sets next group as obtained information from above
     setCurrentGroupNumberAndNextGroup();
-    displayWhetherCorrectOrWrong("PASSED");
+  }
+  if (numberOfPasses > 5) {
+    audience();
   }
 }
 
@@ -332,7 +395,22 @@ function updateNextGroupToGivePointsInDatabase() {
   );
 }
 function displayWhetherCorrectOrWrong(status) {
-  document.getElementById("correctORwrong").innerHTML = status;
+  var conditionOfQuestion = document.getElementById("conditionOfQuestion");
+  conditionOfQuestion.innerHTML = status;
+
+  if (status == "Incorrect") {
+    conditionOfQuestion.style.display = "block";
+    conditionOfQuestion.className = "btn btn-danger";
+  }
+
+  if (status == "Pass") {
+    conditionOfQuestion.style.display = "block";
+    conditionOfQuestion.className = "btn btn-secondary";
+  }
+  if (status == "Times Up!") {
+    conditionOfQuestion.style.display = "block";
+    conditionOfQuestion.className = "btn btn-danger";
+  }
 }
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -379,7 +457,7 @@ function convertGroupNumberToGroupName(groupNumberToBeConverted) {
 }
 
 function typeWriter() {
-  var txt = "Lorem ipsum dummy text blabla.";
+  var txt = finalQuestion;
   var speed = 50;
   if (questionStringPosition < txt.length) {
     document.getElementById("question").innerHTML += finalQuestion.charAt(
@@ -388,25 +466,112 @@ function typeWriter() {
     questionStringPosition++;
     setTimeout(typeWriter, speed);
   }
+
+  if (questionStringPosition == txt.length) {
+    typingCompleted = true;
+    console.log(typingCompleted);
+    timer();
+  }
 }
 // for which group is currently active
 function groupToDisplay() {
-  document.getElementById("GroupName").innerHTML = currentGroupToGivePoints;
+  db.getRows(
+    "points",
+    pointsLocation,
+    {
+      G: currentGroupToGivePoints
+    },
+    (succ, data) => {
+      console.log(succ);
+      console.log(data);
+      group = data[0].GN;
+      // succ - boolean, tells if the call is successful
+      // data - array of objects that represents the rows.
+    }
+  );
+  document.getElementById("GroupName").innerHTML = "Group:  " + group;
 }
-function timer() {
-  if (timerValue < 0) {
-    console.log("---------");
-    document.getElementById("timeUp").innerHTML = "TIMES UP";
-    console.log("Times Up");
-    console.log("---------");
-    pass();
+
+async function timer() {
+  timerpp = document.getElementById("progressFront");
+
+  var timerAmountInPercent;
+  if (totalTimerValue == 0) {
+    timerpp.style.width = "100%";
+
+    timerpp.style.background = "#eb4c34";
   }
-  console.log(timerValue);
+  if (totalTimerValue < 0) {
+    displayWhetherCorrectOrWrong("Times Up!");
+
+    timesup();
+    await sleep(900);
+    document.getElementById("conditionOfQuestion").style.display = "none";
+  }
 
   setTimeout(function() {
     timer();
-  }, 1000);
+  }, 20);
 
-  document.getElementById("Timer").innerHTML = timerValue.toString();
-  timerValue = timerValue - 1;
+  timerAmountInPercent = (totalTimerValue / abcdef) * 100;
+
+  if (totalTimerValue < 1000) {
+    document.getElementById("timeRemaining").innerHTML =
+      parseInt(totalTimerValue.toString().substring(0, 1)) + 1;
+  }
+  if (totalTimerValue < 100) {
+    document.getElementById("timeRemaining").innerHTML = "1";
+  }
+  if (totalTimerValue > 1000) {
+    document.getElementById("timeRemaining").innerHTML =
+      parseInt(totalTimerValue.toString().substring(0, 2)) + 1;
+  }
+  if (totalTimerValue < 0) {
+    timerpp.style.width = "100%";
+    timerpp.style.background = "#fc3a07";
+  }
+  if (timerAmountInPercent <= 100 && timerAmountInPercent > 90) {
+    timerpp.style.background = "#5FA803";
+  }
+  if (timerAmountInPercent <= 90 && timerAmountInPercent > 80) {
+    timerpp.style.background = "#A3C600";
+  }
+  if (timerAmountInPercent < 80 && timerAmountInPercent > 70) {
+    timerpp.style.background = "#C4D20B";
+  }
+  if (timerAmountInPercent <= 70 && timerAmountInPercent > 60) {
+    timerpp.style.background = "#D8DC01";
+  }
+  if (timerAmountInPercent <= 60 && timerAmountInPercent > 50) {
+    timerpp.style.background = "#F3E500";
+  }
+  if (timerAmountInPercent <= 50 && timerAmountInPercent > 40) {
+    timerpp.style.background = "#FEC307";
+  }
+
+  if (timerAmountInPercent <= 40 && timerAmountInPercent > 30) {
+    timerpp.style.background = "#FAB100";
+  }
+  if (timerAmountInPercent <= 30 && timerAmountInPercent > 20) {
+    timerpp.style.background = "#F8920C";
+  }
+  if (timerAmountInPercent <= 20 && timerAmountInPercent > 10) {
+    timerpp.style.background = "#FC5B01";
+  }
+  if (timerAmountInPercent <= 10 && timerAmountInPercent > 0) {
+    timerpp.style.background = "#FC3A07";
+  }
+  //value of timer for spontaneous flow
+  var vlu = timerAmountInPercent / 10;
+  //didnot knew what to name
+  var iiiiii;
+  for (iiiiii = 10; iiiiii > 9; iiiiii = iiiiii - 1) {
+    var a = vlu * iiiiii;
+    timerpp.style.width = a.toString() + "%";
+    await sleep(100);
+  }
+  totalTimerValue = totalTimerValue - 1;
+}
+function audience() {
+  window.location.href = "../question/audience.html?" + queryString;
 }
