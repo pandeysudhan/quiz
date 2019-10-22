@@ -1,0 +1,73 @@
+#containsWhichGroup {
+  text-align: center;
+}
+#conditionOfQuestion {
+  font-size: 30px;
+  margin: 0 auto;
+}
+#GroupName {
+  margin-top: 2vh;
+  display: none;
+  font-size: 25px;
+  margin-left: 40vw;
+}
+.buttonType {
+  font-size: 50px;
+}
+.timeRemainingTitle {
+  margin-left: 42%;
+  margin-top: 6vh;
+  font-size: 25px;
+}
+/* buttonType is class of all the pass correct or wrong button */
+
+#timeRemaining {
+  margin-left: 46%;
+  margin-bottom: 0px;
+
+  height: 10vh;
+  width: 10vw;
+  text-align: center;
+  padding: 2%;
+  font-size: 30px;
+}
+#progressBack {
+  margin-left: 32%;
+  margin-right: 20%;
+  margin-bottom: 3%;
+  width: 40%;
+  background: #ddd;
+  text-align: center;
+}
+
+#progressFront {
+  margin-bottom: 3%;
+  width: 100%;
+  height: 30px;
+  background: #4caf50;
+}
+body {
+  background: black !important;
+  overflow-x: hidden;
+}
+
+.buttonType {
+  margin-left: 40%;
+  display: none;
+  height: 100px;
+  width: 100px;
+}
+
+.questionArea {
+  padding: 10px;
+  width: 100%;
+  min-height: 20vh;
+  font-size: 30px;
+}
+.groupbtn {
+  font-size: 30px;
+}
+#containsWhichGroup {
+  margin-top: 25px;
+  text-align: center;
+}

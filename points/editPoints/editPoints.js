@@ -5,7 +5,7 @@ const BrowserWindow = remote.BrowserWindow;
 const db = require("electron-db");
 const path = require("path");
 const pointsLocation = path.join(__dirname, "../");
-
+eee();
 setPointsForEditing();
 function setPointsForEditing() {
   ipc.on("message", (event, points) => {
@@ -41,4 +41,13 @@ function sendEditedPoints() {
     F: document.getElementById("F").value
   };
   ipc.send("UpdatedPoints", editedPoints);
+}
+function eee() {
+  var windowObjectArray = remote.BrowserWindow.getAllWindows();
+  for (var i = 0, len = windowObjectArray.length; i < len; i++) {
+    var windowObject = windowObjectArray[i];
+    console.log("window id: " + windowObject.id);
+    console.log("name: " + windowObject._name);
+    console.log("tag: " + windowObject.webContents.getTitle());
+  }
 }

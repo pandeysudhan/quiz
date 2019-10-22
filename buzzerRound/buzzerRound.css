@@ -1,0 +1,151 @@
+#rules {
+  font-size: 20px;
+  width: 9%;
+}
+#next {
+  font-size: 20px;
+}
+#backToMain {
+  font-size: 20px;
+  width: 12%;
+}
+.changePoints {
+  align-items: center;
+}
+#editPoints {
+  font-size: 20px;
+
+  margin: 8px;
+  width: 15%;
+}
+.scoreGroup {
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+}
+.GroupName {
+  text-align: center;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.questionChoice {
+  height: 10vh;
+  width: 10vw;
+  /* 12*6 =72 + 28 from margin*/
+  margin-left: 2%;
+  margin-right: 2%;
+  /* total margin 28*/
+  margin-bottom: 0.75%;
+  margin-top: 0.75%;
+  font-size: 50px;
+}
+
+.questionChoice:hover {
+  background-color: green;
+}
+
+.cardContainingChoices {
+  background-color: #400239;
+  height: 55vh;
+}
+
+/*
+  adding margin to the terminal choices
+  */
+#QN6,
+#QN12,
+#QN18,
+#QN24,
+#QN30 {
+  margin-right: 4%;
+}
+
+#QN1,
+#QN7,
+#QN13,
+#QN19,
+#QN25 {
+  margin-left: 4%;
+}
+
+#QN1,
+#QN2,
+#QN3,
+#QN4,
+#QN5,
+#QN6 {
+  margin-top: 2%;
+}
+
+#QN25,
+#QN26,
+#QN27,
+#QN28,
+#QN29,
+#QN30 {
+  margin-bottom: 2%;
+}
+
+#homeroundTitle {
+  background-color: orange;
+  margin-bottom: 0;
+}
+
+#questionChoicesArea {
+  margin-top: 7%;
+  overflow: hidden;
+  height: 80%;
+  background: #400239;
+}
+.scoreArea {
+  background-color: navy;
+}
+
+/*score table*/
+table {
+  table-layout: fixed;
+  width: 80px;
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+
+  background-color: blueviolet;
+}
+td,
+th {
+  height: 40px;
+  width: 13vw;
+  overflow-x: hidden;
+  font-size: 20px;
+  border: 2px solid #4d4040;
+  text-align: center;
+  white-space: nowrap;
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+.GroupName {
+  background-color: beige;
+}
+
+tr:nth-child(even) {
+  font-size: 30px;
+  font-weight: bold;
+
+  background-color: #dddddd;
+}
+
+/*table completed*/
+
+body {
+  min-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+/* for the design of back button*/
+#tableWithScore {
+  height: 20px;
+}
+#containerWithScore {
+  height: 50px;
+}

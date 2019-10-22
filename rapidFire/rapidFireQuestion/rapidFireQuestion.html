@@ -1,0 +1,92 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="../../node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="rapidFireQuestion.css" />
+  </head>
+  <body style="background-color: black ;">
+    <div class="card" style="width: 80%;margin-left: auto;margin-right: auto">
+      <span class="badge badge-secondary" id="groupforset"></span>
+      <div class="container" style="height: 55%; font-size: 28px">
+        <div id="Q0"></div>
+        <div id="Q1"></div>
+        <div id="Q2"></div>
+        <div id="Q3"></div>
+        <div id="Q4"></div>
+        <div id="Q5"></div>
+        <div id="Q6"></div>
+        <div id="Q7"></div>
+        <div id="Q8"></div>
+        <div id="Q9"></div>
+      </div>
+    </div>
+
+    <div class="row">
+      <!---
+      <button id="back" , onclick="goBackWithoutAsking()" class="btn btn-dark buttonType">
+        back
+      </button>
+      -->
+
+      <div class="col" style="margin-top: 20px">
+        <div class="container" style="text-align: center">
+          <h2><span class="badge badge-secondary" id="wrongno">0</span></h2>
+
+          <button
+            id="Wrong"
+            ,
+            onclick="wrong()"
+            class="btn btn-danger buttonType"
+          >
+            W
+          </button>
+        </div>
+      </div>
+      <div class="col">
+        <!-- progressbar for the timer-->
+
+        <button class="btn btn-warning timeRemainingTitle">
+          Time Remaining:
+        </button>
+        <h2>
+          <span class="badge badge-secondary" id="timeRemaining"></span>
+        </h2>
+        <div id="progressBack">
+          <div id="progressFront"></div>
+        </div>
+
+        <!--  finished progressbar for the timer-->
+      </div>
+      <div class="col" style="margin-top: 20px">
+        <div class="container" style="text-align: center">
+          <h2><span class="badge badge-secondary" id="correctno">0</span></h2>
+
+          <button
+            id="correct"
+            ,
+            class="btn btn-success buttonType"
+            ,
+            onclick="correct()"
+          >
+            C
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="row" style="text-align: center">
+      <div class="col" style="text-align: center">
+        <button class="btn btn-success" id="pointsGot">Total Points: +0</button>
+      </div>
+      <div class="col" style="text-align: center">
+        <button class="btn btn-primary" id="done" onclick="done()">Done</button>
+      </div>
+    </div>
+    <script src="rapidFireQuestion.js"></script>
+  </body>
+</html>

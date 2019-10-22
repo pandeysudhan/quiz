@@ -1,0 +1,116 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="../../node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="buzzerquestion.css" />
+  </head>
+  <body style="background-color: black">
+    <div class="container" id="containsWhichGroup">
+      <button id="conditionOfQuestion" class="btn"></button>
+      <br />
+      <button id="GroupName" class="btn btn-info"></button>
+    </div>
+    <div class="container questionAreaContainer">
+      <div class="card questionArea">
+        <div class="questionArea" id="question"></div>
+      </div>
+    </div>
+    <!-- progressbar for the timer-->
+    <div class="container">
+      <button class="btn btn-warning timeRemainingTitle">
+        Time Remaining:
+      </button>
+      <h2><span class="badge badge-secondary" id="timeRemaining"></span></h2>
+      <div class="container"></div>
+      <div id="progressBack">
+        <div id="progressFront"></div>
+      </div>
+    </div>
+    <div class="row">
+      <!---
+<button id="back" , onclick="goBackWithoutAsking()" class="btn btn-dark buttonType">
+  back
+</button>
+-->
+
+      <div class="col">
+        <div class="container" style="text-align: center">
+          <button
+            id="Wrong"
+            ,
+            onclick="wrong()"
+            class="btn btn-danger buttonType"
+          >
+            W
+          </button>
+        </div>
+      </div>
+      <div class="col">
+        <div class="container" style="text-align: center">
+          <button
+            id="correct"
+            ,
+            class="btn btn-success buttonType"
+            ,
+            onclick="correct()"
+          >
+            C
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="row" id="containsWhichGroup">
+      <div class="col">
+        <button
+          class="btn btn-primary groupbtn"
+          id="A"
+          onclick="whichGroup(this.id)"
+        ></button>
+      </div>
+      <div class="col">
+        <button
+          class="btn btn-primary groupbtn"
+          id="B"
+          onclick="whichGroup(this.id)"
+        ></button>
+      </div>
+      <div class="col">
+        <button
+          class="btn btn-primary groupbtn"
+          id="C"
+          onclick="whichGroup(this.id)"
+        ></button>
+      </div>
+      <div class="col">
+        <button
+          class="btn btn-primary groupbtn"
+          id="D"
+          onclick="whichGroup(this.id)"
+        ></button>
+      </div>
+      <div class="col">
+        <button
+          class="btn btn-primary groupbtn"
+          id="E"
+          onclick="whichGroup()"
+        ></button>
+      </div>
+      <div class="col">
+        <button
+          class="btn btn-primary groupbtn"
+          id="F"
+          onclick="whichGroup(this.id)"
+        ></button>
+      </div>
+    </div>
+    <!--  finished progressbar for the timer-->
+    <button onclick="goback()">back</button>
+    <script src="buzzerquestion.js"></script>
+  </body>
+</html>

@@ -3,22 +3,26 @@
     {
       "QN": "1",
       "question": "What is your first name?",
-      "status": "unasked"
+      "status": "asked",
+      "finalAnswer": "one"
     },
     {
       "QN": "2",
       "question": "What is your second name?",
-      "status": "unasked"
+      "status": "asked",
+      "finalAnswer": "two"
     },
     {
       "QN": "3",
       "question": "What is your third name?",
-      "status": "unasked"
+      "status": "asked",
+      "finalAnswer": "three"
     },
     {
       "QN": "4",
       "question": "What is your fourth name?",
-      "status": "asked"
+      "status": "unasked",
+      "finalAnswer": "four"
     },
     {
       "QN": "5",
@@ -38,7 +42,7 @@
     {
       "QN": "8",
       "question": "What is your eight name?",
-      "status": "unasked"
+      "status": "asked"
     },
     {
       "QN": "9",

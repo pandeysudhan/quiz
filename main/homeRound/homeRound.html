@@ -2,150 +2,26 @@
 
 <html>
 
-<head>
+<head> <link rel="stylesheet" href="../../assets/all.css" />
   <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="homeRound.css">
   <style type="text/css">
-  .changePoints{
-    align-items: center
-  }
-  #editPoints{
-    margin: 8px;
-    height: 100%;
-    width: 50%
-
-  }
-    .scoreGroup {
-      text-align: center;
-      font-size: 30px;
-      font-weight: bold;
-    }
-    .GroupName{
-      text-align: center;
-      font-size: 15px;
-      font-weight: bold;
-
-    }
-
-    .questionChoice {
-      height: 14%;
-      width: 10%;
-      /* 12*6 =72 + 28 from margin*/
-      margin-left: 2%;
-      margin-right: 2%;
-      /* total margin 28*/
-      margin-bottom: .75%;
-      margin-top: .75%;
-      font-size: 20px;
-    }
-
-    .questionChoice:hover {
-      background-color: green;
-    }
-
-    .cardContainingChoices {
-      height: 55vh;
-
-    }
-
-    /*
-adding margin to the terminal choices
-*/
-    #QN6,
-    #QN12,
-    #QN18,
-    #QN24,
-    #QN30 {
-      margin-right: 4%
-    }
-
-    #QN1,
-    #QN7,
-    #QN13,
-    #QN19,
-    #QN25 {
-      margin-left: 4%
-    }
-
-    #QN1,
-    #QN2,
-    #QN3,
-    #QN4,
-    #QN5,
-    #QN6 {
-      margin-top: 2%
-    }
-
-    #QN25,
-    #QN26,
-    #QN27,
-    #QN28,
-    #QN29,
-    #QN30 {
-      margin-bottom: 2%
-    }
-
-    #homeroundTitle {
-      background-color: orange;
-      margin-bottom: 0
-    }
-
-    #questionChoicesArea {
-      overflow: hidden;
-      height: 80%;
-      background: #400239;
-    }
-    .scoreArea{
-      background-color: navy;
-      height: 45vh;
-    }
-
-
-    /*score table*/
-    table {
-      font-family: arial, sans-serif;
-      border-collapse: collapse;
-      width: 80%;
-      background-color: blueviolet;
-
-    }
-
-    td,
-    th {
-      border: 2px solid #4d4040;
-      text-align: left;
-      padding: 8px;
-    }
-
-    .GroupName {
-      background-color: beige;
-    }
-
-    tr:nth-child(even) {
-      background-color: #dddddd;
-    }
-
-    /*table completed*/
-
-    body {
-      min-width: 100%;
-      margin: 0;
-      padding: 0;
-    }
-    /* for the design of back button*/
+  
 
 
 
   </style>
 
-  <title>Just a Page</title>
+  <title>Oxford Quiz</title>
 </head>
 <!-- about the question choices -->
 
 
 <body style="background-color:black">
   <div class="card text-center cardContainingChoices">
-    <div id="homeroundTitle" class="card-header cardTitle">
-      <font size="20" face:"Verdana, Geneva, sans-serif ">HOME ROUND</font>
+    <div id="homeroundTitle" class="card-header cardTitle">      <i class="fas fa-home" style="font-size: 50px;margin-right: 3px"></i>
+
+      <font size="20" face:"Verdana, Geneva, sans-serif ">   HOME ROUND</font>
 </div>
     <div id="questionChoicesArea" class="card-body">
     </div>
@@ -189,8 +65,11 @@ adding margin to the terminal choices
   <div class="row">
     <div class="col changePoints">
   <div class="card" style="margin: 10px; background-color: aquamarine">
+      <button id="backToMain" class="btn btn-secondary" , onclick="backToMain()"> ← Rounds</button>
       <button id="editPoints" class="btn btn-secondary" , onclick="createWindow()">Edit Points</button>
-  </div>
+     
+    </div>
+
   </div>
   <div class="col rotateGroup">
   <div class="container">
@@ -217,6 +96,8 @@ adding margin to the terminal choices
   <div class="col changeTheGroup">
     <button id="next" class="btn btn-info"onclick="next()" style="margin:15px"
     >Next group</button>
+    <button id="rules" class="btn btn-info" style="margin:15px"
+    >Rules</button>
   </div>
 
   </div>

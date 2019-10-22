@@ -1,63 +1,19 @@
 const path = require("path");
 const ipc = require("electron").ipcRenderer;
-const pointsLocation = path.join(__dirname, "../../points/");
+const pointsLocation = path.join(__dirname, "../points/");
 const db = require("electron-db");
 var points;
-const questionLocation = path.join(__dirname, "../question/");
+const rapidquestionLocation = path.join(__dirname, "/rapidFireQuestion/");
 const electron = require("electron");
 const BrowserWindow = electron.remote.BrowserWindow;
 let win;
 var datas;
-
 setQuestionChoices();
-
-function setRotation() {
-  if (document.getElementById("ClockWise").checked == true) {
-    document.getElementById("rotationValue").innerHTML = "Rotation: ClockWise";
-    db.updateRow(
-      "points",
-      pointsLocation,
-      {
-        name: "G"
-      },
-      {
-        rotation: "C"
-      },
-      (succ, msg) => {
-        // succ - boolean, tells if the call is successful
-        console.log("Success: " + succ);
-        console.log("Message: " + msg);
-      }
-    );
-  } else if (document.getElementById("AntiClockWise").checked == true) {
-    document.getElementById("rotationValue").innerHTML =
-      "Rotation: Anti-ClockWise";
-
-    db.updateRow(
-      "points",
-      pointsLocation,
-      {
-        name: "G"
-      },
-      {
-        rotation: "A"
-      },
-      (succ, msg) => {
-        // succ - boolean, tells if the call is successful
-        console.log("Success: " + succ);
-        console.log("Message: " + msg);
-      }
-    );
-  }
-}
-
 function setQuestionChoices() {
-  setRotation();
-  db.getAll("quizzy", questionLocation, (succ, data) => {
+  db.getAll("rapidFireQuestions", rapidquestionLocation, (succ, data) => {
     console.log(succ);
     console.log(data);
     console.log(data);
-
     datas = data;
 
     // succ - boolean, tells if the call is successful
@@ -68,15 +24,14 @@ function setQuestionChoices() {
   //makes question Button for each of the questions
   for (i = 1; i <= datas.length; i++) {
     question[i] = document.createElement("button");
-    questionNumber[i] = datas[i - 1].QN;
-    addQN = "Q.";
+    questionNumber[i] = datas[i - 1].Q;
+    addQN = "Set ";
     question[i].innerHTML = addQN + questionNumber[i];
     question[i].id = "QN" + i;
     //to match the class name from internet
     question[i].className = "questionChoice btn btn-primary";
     if (datas[i - 1].status == "asked") {
       question[i].disabled = true;
-
       question[i].style.opacity = 0;
     }
 
@@ -84,10 +39,10 @@ function setQuestionChoices() {
       //gets the value of button and return only number
       queNo = this.innerHTML.replace(addQN, "");
       db.updateRow(
-        "quizzy",
-        questionLocation,
+        "rapidFireQuestions",
+        rapidquestionLocation,
         {
-          QN: queNo
+          Q: queNo
         },
         {
           status: "asked"
@@ -98,9 +53,11 @@ function setQuestionChoices() {
           console.log("Message: " + msg);
         }
       );
+
       document.getElementById(this.id).style.opacity = 0;
+
       console.log(queNo);
-      setRotation();
+
       QN(this.id.replace("QN", ""));
     };
 
@@ -116,10 +73,10 @@ function resetQuestions() {
     console.log("---------");
 
     db.updateRow(
-      "quizzy",
-      questionLocation,
+      "rapidFireQuestions",
+      rapidquestionLocation,
       {
-        QN: i.toString()
+        Q: i.toString()
       },
       {
         status: "unasked"
@@ -164,6 +121,7 @@ function createWindow() {
     // when you should delete the corresponding element.
     win = null;
   });
+
   win.webContents.on("did-finish-load", () => {
     win.webContents.send("message", points);
   });
@@ -186,35 +144,17 @@ function setPoints() {
   document.getElementById("D").innerHTML = points[3].pts;
   document.getElementById("E").innerHTML = points[4].pts;
   document.getElementById("F").innerHTML = points[5].pts;
-
-  //set names of groups
+  //set the names of groups
   document.getElementById("AH").innerHTML = points[0].GN;
   document.getElementById("BH").innerHTML = points[1].GN;
   document.getElementById("CH").innerHTML = points[2].GN;
   document.getElementById("DH").innerHTML = points[3].GN;
   document.getElementById("EH").innerHTML = points[4].GN;
   document.getElementById("FH").innerHTML = points[5].GN;
-
-  console.log(points[6].whichGroupToChooseQuestions);
-
-  currentGroup = points[6].whichGroupToChooseQuestions;
-  //highlights the group to choose question
-  document.getElementById(currentGroup + "H").style.backgroundColor = "#7FF858";
-
-  //it sets the value of rotation initially
-  if (points[6].rotation == "C") {
-    document.getElementById("ClockWise").checked = true;
-    document.getElementById("rotationValue").innerHTML = "Rotation: ClockWise";
-  }
-  if (points[6].rotation == "A") {
-    document.getElementById("AntiClockWise").checked = true;
-    document.getElementById("rotationValue").innerHTML =
-      "Rotation: Anti-ClockWise";
-  }
 }
 
 function QN(id) {
-  window.location.href = "../question/areyouready.html?" + id;
+  window.location.href = "rapidFireQuestion/rapidReady.html?" + id;
 }
 
 function reset() {
@@ -359,104 +299,6 @@ ipc.on("UpdateThePoints", function(event, args) {
   document.getElementById("F").innerHTML = args.F;
 });
 
-function next() {
-  var datas;
-  //get the fresh copy of points database
-  db.getAll("points", pointsLocation, (succ, data) => {
-    console.log(succ);
-    console.log(data);
-    datas = data;
-    // succ - boolean, tells if the call is successful
-    // data - array of objects that represents the rows.
-  });
-  var currentGroupNumber = convertGroupNameToGroupNumber(currentGroup);
-  var rotation = datas[6].rotation;
-  //if rotation is clockwise
-  if (rotation == "C") {
-    if (currentGroupNumber == 5) {
-      currentGroupNumber = 0;
-    } else {
-      currentGroupNumber = currentGroupNumber + 1;
-    }
-  }
-  //if rotation is anticlockwise
-  if (rotation == "A") {
-    if (currentGroupNumber == 0) {
-      currentGroupNumber = 5;
-    } else {
-      currentGroupNumber = currentGroupNumber - 1;
-    }
-  }
-  var nextGroupToChooseQuestions = convertGroupNumberToGroupName(
-    currentGroupNumber
-  );
-  db.updateRow(
-    "points",
-    pointsLocation,
-    {
-      name: "G"
-    },
-    {
-      whichGroupToChooseQuestions: nextGroupToChooseQuestions
-    },
-    (succ, msg) => {
-      // succ - boolean, tells if the call is successful
-      console.log("Success: " + succ);
-      console.log("Message: " + msg);
-    }
-  );
-  // change all table heading to original color
-  document.getElementById("AH").style.backgroundColor = "beige";
-  document.getElementById("BH").style.backgroundColor = "beige";
-  document.getElementById("CH").style.backgroundColor = "beige";
-  document.getElementById("DH").style.backgroundColor = "beige";
-  document.getElementById("EH").style.backgroundColor = "beige";
-  document.getElementById("FH").style.backgroundColor = "beige";
-
-  setPoints();
-}
-
-function convertGroupNameToGroupNumber(groupNameToBeConverted) {
-  if (groupNameToBeConverted == "A") {
-    return 0;
-  }
-  if (groupNameToBeConverted == "B") {
-    return 1;
-  }
-  if (groupNameToBeConverted == "C") {
-    return 2;
-  }
-  if (groupNameToBeConverted == "D") {
-    return 3;
-  }
-  if (groupNameToBeConverted == "E") {
-    return 4;
-  }
-  if (groupNameToBeConverted == "F") {
-    return 5;
-  }
-}
-
-function convertGroupNumberToGroupName(groupNumberToBeConverted) {
-  if (groupNumberToBeConverted == 0) {
-    return "A";
-  }
-  if (groupNumberToBeConverted == 1) {
-    return "B";
-  }
-  if (groupNumberToBeConverted == 2) {
-    return "C";
-  }
-  if (groupNumberToBeConverted == 3) {
-    return "D";
-  }
-  if (groupNumberToBeConverted == 4) {
-    return "E";
-  }
-  if (groupNumberToBeConverted == 5) {
-    return "F";
-  }
-}
 function backToMain() {
-  window.location.href = "../../mainPage/mainPage.html";
+  window.location.href = "../mainPage/mainPage.html";
 }
