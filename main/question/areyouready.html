@@ -1,0 +1,47 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="../../node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
+    <style>
+      #questionNumber {
+        margin-top: 30%;
+        font-size: 60px;
+        width: 30vh;
+        height: 30vh;
+      }
+      #backbtn {
+        margin-top: 10%;
+      }
+      .abc {
+        text-align: center;
+      }
+      body {
+        background-color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container abc">
+      <button
+        class="btn btn-primary"
+        id="questionNumber"
+        onclick="onready()"
+      ></button>
+      <br />
+      <button
+        class="btn btn-secondary"
+        id="backbtn"
+        onclick="goBackWithoutAsking()"
+      >
+        Back
+      </button>
+    </div>
+    <script src="areyouready.js"></script>
+  </body>
+</html>

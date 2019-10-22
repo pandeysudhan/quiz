@@ -1,0 +1,94 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Oxford Quiz</title>
+    <link
+      rel="stylesheet"
+      href="../node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="buzzerRound.css" />
+    <link rel="stylesheet" href="../assets/all.css" />
+
+  </head>
+  
+      
+
+      <body style="background-color:black">
+        <!-- about the question choices -->
+      <div class="card text-center cardContainingChoices">
+        <div id="homeroundTitle" class="card-header cardTitle"><i class="fas fa-dot-circle" style="font-size:50px ; margin-right: 3px"></i>
+          <font size="20" face:"Verdana, Geneva, sans-serif ">      BUZZER ROUND</font>
+    </div>
+        <div id="questionChoicesArea" class="card-body">
+        </div>
+      </div>
+      <!-- finished the question choices -->
+    
+
+      <!-- table of scores -->
+    
+      <div class="container" align="center" id="containerWithScore">
+        <h2><span class="badge badge-secondary">Score Board</span></h2>
+        <div class="card cardWithScore" >
+    <div class="card-body" >
+          <table id="tableWithScore" style="height:100%;width:100%; margin-left: 0 auto; margin-right: 0 auto">
+            <tr>
+              <th id="AH" class="GroupName">A</th>
+              <th id="BH" class="GroupName">B</th>
+              <th id="CH" class="GroupName">C</th>
+              <th id="DH" class="GroupName">D</th>
+              <th id="EH" class="GroupName">E</th>
+              <th id="FH" class="GroupName">F</th>
+            </tr>
+            <tr>
+              <td class="scoreGroup" id="A">0</td>
+              <td class="scoreGroup" id="B">0</td>
+              <td class="scoreGroup" id="C">0</td>
+              <td class="scoreGroup" id="D">0</td>
+              <td class="scoreGroup" id="E">0</td>
+              <td class="scoreGroup" id="F">0</td>
+            </tr>
+          </table>
+    
+    
+        </div>
+      </div>
+    
+    <!-- finished table of scores -->
+    
+     <!-- start of scoreArea -->
+    <div class="card scoreArea">
+    
+   
+      <div class="row">
+        <div class="col changePoints">
+      <div class="container" style="margin: 10px; background-color: aquamarine">
+          <button id="backToMain" class="btn btn-secondary" , onclick="backToMain()"> ← Rounds</button>
+          <button id="editPoints" class="btn btn-secondary" , onclick="createWindow()">Edit Points</button>
+          <button id="rules" class="btn btn-info" style="margin:15px"
+          >Rules</button>
+        </div>
+    
+      </div>
+      
+      
+    
+      </div>
+    
+      <button id="reset" , onclick="reset()" style="width: 10%">Reset</button>
+  
+      <button id="resetQuestions" , onclick="resetQuestions()"style="width: 15%">
+        Reset Question
+      </button>
+    
+    
+      </div>
+      
+    
+   
+    <!-- div of scoreArea-->
+    <script src="buzzerRound.js"></script>
+  </body>
+</html>

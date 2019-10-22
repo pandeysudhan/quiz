@@ -1,0 +1,89 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>AUDIENCE</title>
+    <link
+      rel="stylesheet"
+      href="../../node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
+    <style>
+      #containsWhichGroup {
+        text-align: center;
+      }
+      #audience {
+        width: 15vw;
+        height: 20vh;
+      }
+      .questionArea {
+        margin-top: 1%;
+        width: 100%;
+        min-height: 20vh;
+        font-size: 30px;
+        padding: 10px;
+      }
+      body {
+        background: black !important;
+        overflow-x: hidden;
+      }
+      #GroupName {
+        margin-top: 2vh;
+
+        font-size: 50px;
+      }
+      #showCorrect {
+        height: 15vh;
+        width: 40vw;
+        font-size: 50px;
+        margin-top: 1vh;
+      }
+      .home {
+        margin-top: 3%;
+        font-size: 120px;
+        height: 10vh;
+        width: 10vw;
+      }
+
+      #correctAnswer {
+        display: none;
+        font-size: 50px;
+        min-height: 10vh;
+        min-width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container" id="containsWhichGroup">
+      <button id="GroupName" class="btn btn-primary">Audience</button>
+      <h2>
+        <span class="badge badge-secondary">By:</span>
+
+        <input type="text" style="margin-right: 7%" />
+        <br />
+        <span class="badge badge-secondary">Class:</span>
+        <input type="text" style="margin-right: 10.6%" />
+      </h2>
+    </div>
+
+    <div class="container questionAreaContainer">
+      <div class="card questionArea">
+        <div class="questionArea" id="question"></div>
+        <div class="answer">
+          <div id="correctAnswer" class="btn btn-warning"></div>
+        </div>
+      </div>
+    </div>
+    <div class="container" id="containsWhichGroup">
+      <button class="btn btn-success" onclick="showAnswer()" id="showCorrect">
+        Show Correct Answer
+      </button>
+      <br />
+      <button class="btn btn-primary home" onclick="gohome()">
+        <h2>Home</h2>
+      </button>
+    </div>
+
+    <script src="buzzeraudience.js"></script>
+  </body>
+</html>

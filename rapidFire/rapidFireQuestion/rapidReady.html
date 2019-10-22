@@ -1,0 +1,108 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="../../node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
+    <style>
+      #questionNumber {
+        margin-top: 10%;
+        font-size: 60px;
+        width: 30vh;
+        height: 30vh;
+      }
+      #backbtn {
+        margin-top: 10%;
+      }
+      .abc {
+        text-align: center;
+      }
+      body {
+        overflow: hidden;
+        background-color: black;
+      }
+      .groupbtn {
+        display: none;
+        width: 100%;
+        font-size: 30px;
+        margin-top: 50%;
+      }
+      #groupforset {
+        font-size: 50px;
+        width: 30%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container abc">
+      <h2>
+        <span class="badge badge-secondary" id="groupforset"></span>
+      </h2>
+      <button
+        class="btn btn-warning"
+        id="questionNumber"
+        onclick="onready()"
+      ></button>
+    </div>
+    <div class="row" id="containsWhichGroup">
+      <div class="col">
+        <button
+          class="btn btn-primary groupbtn"
+          id="A"
+          onclick="whichGroup(this.id)"
+        ></button>
+      </div>
+      <div class="col">
+        <button
+          class="btn btn-primary groupbtn"
+          id="B"
+          onclick="whichGroup(this.id)"
+        ></button>
+      </div>
+      <div class="col">
+        <button
+          class="btn btn-primary groupbtn"
+          id="C"
+          onclick="whichGroup(this.id)"
+        ></button>
+      </div>
+      <div class="col">
+        <button
+          class="btn btn-primary groupbtn"
+          id="D"
+          onclick="whichGroup(this.id)"
+        ></button>
+      </div>
+      <div class="col">
+        <button
+          class="btn btn-primary groupbtn"
+          id="E"
+          onclick="whichGroup(this.id)"
+        ></button>
+      </div>
+      <div class="col">
+        <button
+          class="btn btn-primary groupbtn"
+          id="F"
+          onclick="whichGroup(this.id)"
+        ></button>
+      </div>
+    </div>
+    <div class="container abc">
+      <button
+        class="btn btn-secondary"
+        id="backbtn"
+        onclick="goBackWithoutAsking()"
+      >
+        Back
+      </button>
+    </div>
+    <script src="rapidReady.js"></script>
+  </body>
+</html>

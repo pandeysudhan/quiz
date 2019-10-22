@@ -1,64 +1,149 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>Question</title>
+    <link
+      rel="stylesheet"
+      href="../../node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="question.css" />
+    <style>
+      #containsWhichGroup {
+        text-align: center;
+      }
+      #conditionOfQuestion {
+        font-size: 30px;
+        margin: 0 auto;
+      }
+      #GroupName {
+        margin-top: 2vh;
 
-<head>
-  <title>Question</title>
-  <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+        font-size: 25px;
+      }
+      .buttonType {
+        font-size: 50px;
+      }
+      .timeRemainingTitle {
+        margin-left: 42%;
+        margin-top: 6vh;
+        font-size: 25px;
+      }
+      /* buttonType is class of all the pass correct or wrong button */
 
-  <style>
-    body {
-      background: black !important;
-    }
+      #timeRemaining {
+        margin-left: 46%;
+        margin-bottom: 0px;
 
-    .buttonType {
-      height: 100px;
-      width: 100px;
-    }
+        height: 10vh;
+        width: 10vw;
+        text-align: center;
+        padding: 2%;
+        font-size: 30px;
+      }
+      #progressBack {
+        margin-left: 32%;
+        margin-right: 20%;
+        margin-bottom: 10%;
+        width: 40%;
+        background: #ddd;
+        text-align: center;
+      }
 
-    .questionArea {
-      width: 100%;
-    }
-  </style>
-</head>
+      #progressFront {
+        margin-bottom: 10%;
+        width: 100%;
+        height: 30px;
+        background: #4caf50;
+      }
+      body {
+        background: black !important;
+        overflow-x: hidden;
+      }
 
-<body>
-  <div class="container">
-    <div class="card questionArea">
-      <div class="card-body questionArea" id="question"></div>
+      .buttonType {
+        height: 100px;
+        width: 100px;
+      }
+
+      .questionArea {
+        padding: 10px;
+        width: 100%;
+        min-height: 20vh;
+        font-size: 30px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container" id="containsWhichGroup">
+      <button id="conditionOfQuestion" class="btn"></button>
+      <br />
+      <button id="GroupName" class="btn btn-info"></button>
     </div>
+    <div class="container questionAreaContainer">
+      <div class="card questionArea">
+        <div class="questionArea" id="question"></div>
+      </div>
+    </div>
+
+    <!-- progressbar for the timer-->
+    <div class="container">
+      <button class="btn btn-warning timeRemainingTitle">
+        Time Remaining:
+      </button>
+      <h2><span class="badge badge-secondary" id="timeRemaining"></span></h2>
+      <div id="progressBack">
+        <div id="progressFront"></div>
+      </div>
+    </div>
+    <!--  finished progressbar for the timer-->
 
     <div class="row">
+      <!---
+<button id="back" , onclick="goBackWithoutAsking()" class="btn btn-dark buttonType">
+  back
+</button>
+-->
+
       <div class="col">
-        <button id="back" , onclick="goBackWithoutAsking()" class="btn btn-dark buttonType">
-          back
-        </button>
+        <div class="text-center">
+          <button
+            id="wrong"
+            ,
+            onclick="wrong()"
+            class="btn btn-danger buttonType"
+          >
+            W
+          </button>
+        </div>
       </div>
       <div class="col">
-        <button id="correct" , class="btn btn-primary buttonType" , onclick="correct()"></button>
+        <div class="text-center">
+          <button
+            id="correct"
+            ,
+            class="btn btn-success buttonType"
+            ,
+            onclick="correct()"
+          >
+            C
+          </button>
+        </div>
       </div>
+
       <div class="col">
-        <button id="wrong" , onclick="wrong()" class="btn btn-danger buttonType">
-          W
-        </button>
-      </div>
-      <div class="col">
-        <button id="Pass" , onclick="pass()" class="btn btn-secondary buttonType">
-          P
-        </button>
+        <div class="text-center">
+          <button
+            id="Pass"
+            ,
+            onclick="pass()"
+            class="btn btn-secondary buttonType"
+          >
+            P
+          </button>
+        </div>
       </div>
     </div>
-  </div>
-  <span class="glyphicon glyphicon-search" style="backgroundColor:red"></span>
-
-  <Div id="correctORwrong"></Div>
-
-  <div>
-    Group
-    <button id="GroupName">null</button>
-  </div>
-  <button id="Timer"></button>
-  <div id="timeUp"></div>
-</body>
-<script src="question.js"></script>
-
+  </body>
+  <script src="question.js"></script>
 </html>

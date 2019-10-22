@@ -1,111 +1,119 @@
 <!DOCTYPE html>
 
 <html>
-  <head>
-    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <style type="text/css">
-.questionChoice{
-  height: 15%;
-  width: 12%; /* 12*6 =72 + 28 from margin*/
-  margin-left: 2% ;
-  margin-right: 2% ;/* total margin 28*/
 
-  margin-bottom:2% ;
-}
-.questionChoice:hover{
-  background-color:green;
-}
+<head> <link rel="stylesheet" href="../../assets/all.css" />
+  <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="homeRound.css">
+  <style type="text/css">
+  
 
-/*
-adding margin to the terminal choices
-*/
-#QN6,#QN12,#QN18,#QN24,#QN30{
-  margin-right: 4%
-}
 
-#QN1,#QN7,#QN13,#QN19,#QN25{
-  margin-left: 4%
-}
 
-      #questionChoicesArea {
-        overflow: hidden;
-        height: 60vh;
-        background: #400239;
-      }
-      table {
-        font-family: arial, sans-serif;
-        border-collapse: collapse;
-        width: 100%;
-        background-color: blueviolet;
-      }
+  </style>
 
-      td,
-      th {
-        border: 2px solid #4d4040;
-        text-align: left;
-        padding: 8px;
-      }
-      .GroupName {
-        background-color: beige;
-      }
-      tr:nth-child(even) {
-        background-color: #dddddd;
-      }
-      body {
-        min-width: 100%;
-        margin: 0;
-        padding: 0;
+  <title>Oxford Quiz</title>
+</head>
+<!-- about the question choices -->
 
-        color: green;
-      }
-    </style>
-    <title>Just a Page</title>
-  </head>
-  <body style="background-color:black">
-    
-<div class="card" >
-    <div id="questionChoicesArea"></div>
+
+<body style="background-color:black">
+  <div class="card text-center cardContainingChoices">
+    <div id="homeroundTitle" class="card-header cardTitle">      <i class="fas fa-home" style="font-size: 50px;margin-right: 3px"></i>
+
+      <font size="20" face:"Verdana, Geneva, sans-serif ">   HOME ROUND</font>
 </div>
-    <button id="editPoints" , onclick="createWindow()">Edit Points</button>
-    <br />
+    <div id="questionChoicesArea" class="card-body">
+    </div>
+  </div>
+  <!-- finished the question choices -->
 
-    <input type="radio" name="rotation" value="Clock Wise" id="ClockWise" />
-    ClockWise<br />
-    <input
-      type="radio"
-      name="rotation"
-      value="Anti ClockWise"
-      id="AntiClockWise"
-    />
-    Anti ClockWise<br />
-    <button onclick="setRotation()">Set</button>
 
-    <table>
-      <tr>
-        <th id="AH" class="GroupName">A</th>
-        <th id="BH" class="GroupName">B</th>
-        <th id="CH" class="GroupName">C</th>
-        <th id="DH" class="GroupName">D</th>
-        <th id="EH" class="GroupName">E</th>
-        <th id="FH" class="GroupName">F</th>
-      </tr>
-      <tr>
-        <td id="A">0</td>
-        <td id="B">0</td>
-        <td id="C">0</td>
-        <td id="D">0</td>
-        <td id="E">0</td>
-        <td id="F">0</td>
-      </tr>
-    </table>
+ <!-- start of scoreArea -->
+<div class="card scoreArea">
 
-    <button id="reset" , onclick="reset()">Reset</button>
-    <button id="resetQuestions" , onclick="resetQuestions()">
-      Reset Question
-    </button>
+  <!-- table of scores -->
 
-    <button id="next" onclick="next()">Next group</button>
+  <div class="container" align="center">
+    <h2><span class="badge badge-secondary">Score Board</span></h2>
+    <div class="card" style="height:17vh">
+<div class="card-body" >
+      <table  style="height:100%;width:100%; margin-left: 0 auto; margin-right: 0 auto">
+        <tr>
+          <th id="AH" class="GroupName">A</th>
+          <th id="BH" class="GroupName">B</th>
+          <th id="CH" class="GroupName">C</th>
+          <th id="DH" class="GroupName">D</th>
+          <th id="EH" class="GroupName">E</th>
+          <th id="FH" class="GroupName">F</th>
+        </tr>
+        <tr>
+          <td class="scoreGroup" id="A">0</td>
+          <td class="scoreGroup" id="B">0</td>
+          <td class="scoreGroup" id="C">0</td>
+          <td class="scoreGroup" id="D">0</td>
+          <td class="scoreGroup" id="E">0</td>
+          <td class="scoreGroup" id="F">0</td>
+        </tr>
+      </table>
 
-    <script type="text/javascript" src="homeRound.js"></script>
-  </body>
+
+    </div>
+  </div>
+
+<!-- finished table of scores -->
+  <div class="row">
+    <div class="col changePoints">
+  <div class="card" style="margin: 10px; background-color: aquamarine">
+      <button id="backToMain" class="btn btn-secondary" , onclick="backToMain()"> ← Rounds</button>
+      <button id="editPoints" class="btn btn-secondary" , onclick="createWindow()">Edit Points</button>
+     
+    </div>
+
+  </div>
+  <div class="col rotateGroup">
+  <div class="container">
+      <h3><span class="badge badge-secondary" id="rotationValue" >Rotation</span></h3>
+  <div class="card text-left" style=" background-color: aquamarine">
+    <div class="card-body">
+      <div class="row">
+      <div class="col">
+        <input type="radio" name="rotation" value="Clock Wise" id="ClockWise" />
+        ClockWise<br />
+        <input type="radio" name="rotation" value="Anti-ClockWise" id="AntiClockWise"  />AntiClockwise
+      </div>
+          <div class="col">
+             <button onclick="setRotation()" class="btn btn-warning"  style="margin-right:30px">Set</button>
+
+          </div>
+
+
+  </div>
+  </div>
+</div>
+</div>
+  </div>
+  <div class="col changeTheGroup">
+    <button id="next" class="btn btn-info"onclick="next()" style="margin:15px"
+    >Next group</button>
+    <button id="rules" class="btn btn-info" style="margin:15px"
+    >Rules</button>
+  </div>
+
+  </div>
+
+  <button id="reset" , onclick="reset()">Reset</button>
+  <button id="resetQuestions" , onclick="resetQuestions()">
+    Reset Question
+  </button>
+
+
+  </div>
+   <!-- start of scoreTable -->
+
+</div>
+<!-- div of scoreArea-->
+  <script type="text/javascript" src="homeRound.js"></script>
+</body>
+
 </html>
