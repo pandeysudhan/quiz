@@ -65,3 +65,7 @@ ipc.on("UpdatedPoints", function(event, args) {
     }
   }
 });
+app.on("activate", () => {
+  mainWindow.show();
+});
+app.on("before-quit", () => (app.quitting = true));

@@ -4,56 +4,56 @@
       "GN": "Oxford",
       "forReset": 0,
       "G": "A",
-      "pts": 90,
-      "rapidFire": "undone",
+      "pts": 0,
+      "rapidFire": "done",
       "rapidFireGroup": "done"
     },
     {
       "GN": "Paramount",
       "forReset": 1,
       "G": "B",
-      "pts": 10,
+      "pts": 0,
       "rapidFire": "undone",
-      "rapidFireGroup": "done"
+      "rapidFireGroup": "undone"
     },
     {
       "GN": "Ideal",
       "forReset": 2,
       "G": "C",
-      "pts": 115,
+      "pts": 0,
       "rapidFire": "undone",
-      "rapidFireGroup": "done"
+      "rapidFireGroup": "undone"
     },
     {
       "GN": "Everest",
       "forReset": 3,
       "G": "D",
-      "pts": 100,
+      "pts": 0,
       "rapidFire": "undone",
-      "rapidFireGroup": "done"
+      "rapidFireGroup": "undone"
     },
     {
       "GN": "Horizon",
       "forReset": 4,
       "G": "E",
-      "pts": 5,
+      "pts": 0,
       "rapidFire": "undone",
-      "rapidFireGroup": "done"
+      "rapidFireGroup": "undone"
     },
     {
       "GN": "Deep",
       "forReset": 5,
       "G": "F",
-      "pts": 30,
-      "rapidFire": "done",
-      "rapidFireGroup": "done"
+      "pts": 0,
+      "rapidFire": "undone",
+      "rapidFireGroup": "undone"
     },
     {
       "GN": "",
       "name": "G",
       "rotation": "C",
-      "whichGroupToGivePoints": "F",
-      "whichGroupToChooseQuestions": "E"
+      "whichGroupToGivePoints": "A",
+      "whichGroupToChooseQuestions": "A"
     }
   ]
 }

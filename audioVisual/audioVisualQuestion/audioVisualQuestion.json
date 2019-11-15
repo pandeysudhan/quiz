@@ -1,0 +1,50 @@
+{
+  "audioVisualQuestion": [
+    {
+      "QN": "1",
+      "question": "What is your first name?",
+      "status": "unasked",
+      "finalAnswer": "one",
+      "media": "../../assets/oxford.jpeg",
+      "mediaSeen": false
+    },
+    {
+      "QN": "2",
+      "question": "What is your second name?",
+      "status": "unasked",
+      "finalAnswer": "two",
+      "media": "../../assets/oxford.jpeg",
+      "mediaSeen": false
+    },
+    {
+      "QN": "3",
+      "question": "What is your third name?",
+      "status": "unasked",
+      "finalAnswer": "three",
+      "media": "../../assets/oxford.jpeg",
+      "mediaSeen": false
+    },
+    {
+      "QN": "4",
+      "question": "What is your fourth name?",
+      "status": "unasked",
+      "finalAnswer": "four",
+      "media": "../../assets/stem.png",
+      "mediaSeen": true
+    },
+    {
+      "QN": "5",
+      "question": "What is your fifth name?",
+      "status": "unasked",
+      "media": "../../assets/oxford.jpeg",
+      "mediaSeen": false
+    },
+    {
+      "QN": "6",
+      "question": "What is your sixth name?",
+      "status": "unasked",
+      "media": "../../assets/oxford.jpeg",
+      "mediaSeen": false
+    }
+  ]
+}

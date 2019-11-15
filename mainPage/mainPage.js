@@ -37,3 +37,6 @@ function setPoints() {
   document.getElementById("EH").innerHTML = points[4].GN;
   document.getElementById("FH").innerHTML = points[5].GN;
 }
+function openAudioVisualRound() {
+  window.location.href = "../audioVisual/audioVisual.html";
+}

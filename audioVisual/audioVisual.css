@@ -1,33 +1,28 @@
 #rules {
   font-size: 20px;
-  width: 9%;
 }
-
 #next {
   font-size: 20px;
 }
-
 #backToMain {
   font-size: 20px;
-  width: 12%;
+  width: 50%;
 }
-
 .changePoints {
   align-items: center;
 }
-
 #editPoints {
   font-size: 20px;
-  margin: 8px;
-  width: 15%;
-}
 
+  margin: 8px;
+  height: 100%;
+  width: 50%;
+}
 .scoreGroup {
   text-align: center;
   font-size: 30px;
   font-weight: bold;
 }
-
 .GroupName {
   text-align: center;
   font-size: 15px;
@@ -43,7 +38,7 @@
   /* total margin 28*/
   margin-bottom: 0.75%;
   margin-top: 0.75%;
-  font-size: 40px;
+  font-size: 50px;
 }
 
 .questionChoice:hover {
@@ -51,13 +46,12 @@
 }
 
 .cardContainingChoices {
-  background-color: #400239;
   height: 55vh;
 }
 
 /*
-    adding margin to the terminal choices
-    */
+  adding margin to the terminal choices
+  */
 #QN6,
 #QN12,
 #QN18,
@@ -98,14 +92,14 @@
 }
 
 #questionChoicesArea {
-  margin-top: 7%;
+  margin-top: 1%;
   overflow: hidden;
   height: 80%;
   background: #400239;
 }
-
 .scoreArea {
   background-color: navy;
+  height: 45vh;
 }
 
 /*score table*/
@@ -114,9 +108,9 @@ table {
   width: 80px;
   font-family: arial, sans-serif;
   border-collapse: collapse;
+
   background-color: blueviolet;
 }
-
 td,
 th {
   height: 40px;
@@ -137,6 +131,7 @@ th {
 tr:nth-child(even) {
   font-size: 30px;
   font-weight: bold;
+
   background-color: #dddddd;
 }
 
@@ -146,12 +141,4 @@ body {
   margin: 0;
   padding: 0;
 }
-
 /* for the design of back button*/
-#tableWithScore {
-  height: 20px;
-}
-
-#containerWithScore {
-  height: 50px;
-}

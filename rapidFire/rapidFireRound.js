@@ -302,3 +302,6 @@ ipc.on("UpdateThePoints", function(event, args) {
 function backToMain() {
   window.location.href = "../mainPage/mainPage.html";
 }
+function rules() {
+  window.location.href = "rules.html";
+}

@@ -2,16 +2,107 @@
 <html lang="en">
   <head>
     <title>Edit Points</title>
+    <link
+      rel="stylesheet"
+      href="../../node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
   </head>
-  <body>
-    Group A:<br /><input id="A" type="number" ,value="0" /><br />
-    Group B:<br /><input id="B" type="number" /><br />
-    Group C:<br /><input id="C" type="number" /><br />
-    Group D:<br /><input id="D" type="number" /><br />
-    Group E:<br /><input id="E" type="number" /><br />
-    Group F:<br /><input id="F" type="number" /><br />
-    <button onclick="cancel()">Cancel</button>
-    <button onclick="updatePoints()">Update</button>
+  <body style=" font-size: 40px; background-color: black;">
+    <div class="container" style="text-align: center;">
+      <h2>
+        <span class="badge badge-secondary" style="background-color: red;"
+          >Edit Score
+        </span>
+      </h2>
+
+      <div
+        class="card"
+        style=" border-radius: 20px;margin-left: auto;margin-right: auto; text-align: center; height: 70vh;width: 70vw;"
+      >
+        <div class="container" style="text-align: center;margin: 3%;">
+          <span
+            class="badge badge-secondary"
+            style="background-color:chocolate;"
+            >Group A:
+          </span>
+
+          <input
+            id="A"
+            type="number"
+            style="text-align: center; border-radius: 6px; margin-top: 2%;width: 20vw;"
+          /><br />
+          <span
+            class="badge badge-secondary"
+            style="background-color:chocolate;"
+            >Group B:
+          </span>
+
+          <input
+            id="B"
+            type="number"
+            style="text-align: center;border-radius: 6px;margin-top: 2%;width: 20vw;"
+          /><br />
+          <span
+            class="badge badge-secondary"
+            style="background-color:chocolate;"
+            >Group C:
+          </span>
+
+          <input
+            id="C"
+            type="number"
+            style="text-align: center;border-radius: 6px;margin-top: 2%;width: 20vw;"
+          /><br />
+          <span
+            class="badge badge-secondary"
+            style="background-color:chocolate;"
+            >Group D:
+          </span>
+
+          <input
+            id="D"
+            type="number"
+            style="text-align: center;border-radius: 6px;margin-top: 2%;width: 20vw;"
+          /><br />
+          <span
+            class="badge badge-secondary"
+            style="background-color:chocolate;"
+            >Group E:
+          </span>
+
+          <input
+            id="E"
+            type="number"
+            style="text-align: center;border-radius: 6px;margin-top: 2%; width: 20vw;"
+          /><br />
+          <span
+            class="badge badge-secondary"
+            style="background-color:chocolate;"
+            >Group F:
+          </span>
+
+          <input
+            id="F"
+            type="number"
+            style="text-align: center;border-radius: 6px;margin-top: 2%;width: 20vw;"
+          /><br />
+        </div>
+      </div>
+      <button
+        onclick="cancel()"
+        class="btn btn-warning"
+        style="margin-top: 7%; margin-right: 3%;font-size: 38px;"
+      >
+        Cancel
+      </button>
+      <button
+        onclick="updatePoints()"
+        class="btn btn-success"
+        style="margin-top: 7%; margin-left: 3%;font-size: 38px;"
+      >
+        Update
+      </button>
+    </div>
     <script src="editPoints.js"></script>
   </body>
 </html>

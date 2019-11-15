@@ -1,0 +1,58 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../../assets/all.css" />
+    <link
+      rel="stylesheet"
+      href="../../node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
+    <style>
+      #questionNumber {
+        margin-top: 10%;
+        font-size: 60px;
+        width: 30vh;
+        height: 30vh;
+      }
+      #backbtn {
+        margin-top: 10%;
+      }
+      .abc {
+        text-align: center;
+      }
+      body {
+        text-align: center;
+        background-color: black;
+      }
+      #file {
+        margin-top: 10vh;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="btn btn-warning" id="file" onclick="openFile()">
+      <i
+        class="fas fa-photo-video"
+        style="font-size: 50px;margin-right: 3px"
+      ></i>
+    </button>
+    <div class="container abc">
+      <button
+        class="btn btn-primary"
+        id="questionNumber"
+        onclick="onready()"
+      ></button>
+      <br />
+      <button
+        class="btn btn-secondary"
+        id="backbtn"
+        onclick="goBackWithoutAsking()"
+      >
+        Back
+      </button>
+    </div>
+    <script src="audioVisualAreYouReady.js"></script>
+  </body>
+</html>

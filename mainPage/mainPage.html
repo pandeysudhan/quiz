@@ -8,15 +8,19 @@
     />
     <link rel="stylesheet" href="../assets/all.css" />
     <style>
-      body {
-        overflow: hidden;
+        body {
+        background-color: black;
+        background-repeat: no-repeat;
+  background-size:100%;
+       overflow: hidden;
       }
       .rounds {
-        margin-top: 10%;
+        margin-top: 7%;
         border-radius: 30%;
         height: 15vh;
         font-size: 30px;
         overflow: hidden;
+        width:55%;
       }
       #visualquiz {
         font-size: 40px;
@@ -29,25 +33,30 @@
         margin-left: auto;
         margin-right: auto;
       }
-      body {
-        background-color: black;
-      }
+    
       #visual {
-        margin-left: 27%;
-        margin-bottom: 10px
+        margin-left: 35%;
+        margin-bottom: 10px;
+        width:55%;
       }
       #rapid {
-        margin-right: 27%;
+        margin-right: 35%;
         margin-bottom: 10px
 
       }
+      #home{
+        margin-left: 35%;
+      }
+      #buzzer{
+        margin-right: 35%;
+      }
       /*score table*/
-table {  
+table {
   table-layout: fixed;
   width: 80px;
   font-family: arial, sans-serif;
   border-collapse: collapse;
-  
+
   background-color: blueviolet;
 }
 td,
@@ -61,7 +70,7 @@ th {
   white-space:nowrap;
   padding-left: 3px;
   padding-right: 3px
-  
+
 }
 
 .GroupName {
@@ -71,7 +80,7 @@ th {
 tr:nth-child(even) {
   font-size: 30px;
   font-weight: bold;
-  
+
   background-color: #dddddd;
 }
 
@@ -79,7 +88,7 @@ tr:nth-child(even) {
 
     </style>
   </head>
-  <body>
+  <body >
     <div class="container" style="text-align: center">
       <div class="row">
         <button class="btn btn-warning" id="oxf">
@@ -117,16 +126,7 @@ tr:nth-child(even) {
           <i class="fas fa-dot-circle"></i> Buzzer Round
         </button>
       </div>
-      <div class="col" style="text-align: center">
-        <button
-          onclick="openGamblingRound()"
-          class="btn btn-primary rounds"
-          id="gambling"
-        >
-          <i class="fas fa-window-restore"></i>
-          Gambling Round
-        </button>
-      </div>
+
     </div>
     <div class="row">
       <div class="col" style="text-align: center">
@@ -153,7 +153,7 @@ tr:nth-child(even) {
       </div>
     </div>
        <!-- table of scores -->
-    
+
        <div class="container" align="center" id="containerWithScore">
         <h2><span class="badge badge-secondary">Score Board</span></h2>
         <div class="card cardWithScore" >
@@ -176,11 +176,11 @@ tr:nth-child(even) {
               <td class="scoreGroup" id="F">0</td>
             </tr>
           </table>
-    
-    
+
+
         </div>
       </div>
-    
+
     <!-- finished table of scores -->
     <script src="mainPage.js"></script>
   </body>

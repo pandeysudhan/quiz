@@ -47,7 +47,7 @@
     {
       "QN": "9",
       "question": "What is your ninth name?",
-      "status": "unasked"
+      "status": "asked"
     },
     {
       "QN": "10",

@@ -1,9 +1,12 @@
 const path = require("path");
 const ipc = require("electron").ipcRenderer;
-const pointsLocation = path.join(__dirname, "../../points/");
+const pointsLocation = path.join(__dirname, "../points/");
 const db = require("electron-db");
 var points;
-const questionLocation = path.join(__dirname, "../question/");
+const audioVisualQuestionLocation = path.join(
+  __dirname,
+  "audioVisualQuestion/"
+);
 const electron = require("electron");
 const BrowserWindow = electron.remote.BrowserWindow;
 let win;
@@ -53,16 +56,20 @@ function setRotation() {
 
 function setQuestionChoices() {
   setRotation();
-  db.getAll("quizzy", questionLocation, (succ, data) => {
-    console.log(succ);
-    console.log(data);
-    console.log(data);
+  db.getAll(
+    "audioVisualQuestion",
+    audioVisualQuestionLocation,
+    (succ, data) => {
+      console.log(succ);
+      console.log(data);
+      console.log(data);
 
-    datas = data;
+      datas = data;
 
-    // succ - boolean, tells if the call is successful
-    // data - array of objects that represents the rows.
-  });
+      // succ - boolean, tells if the call is successful
+      // data - array of objects that represents the rows.
+    }
+  );
   var question = [];
   var questionNumber = [];
   //makes question Button for each of the questions
@@ -84,8 +91,8 @@ function setQuestionChoices() {
       //gets the value of button and return only number
       queNo = this.innerHTML.replace(addQN, "");
       db.updateRow(
-        "quizzy",
-        questionLocation,
+        "audioVisualQuestion",
+        audioVisualQuestionLocation,
         {
           QN: queNo
         },
@@ -116,13 +123,28 @@ function resetQuestions() {
     console.log("---------");
 
     db.updateRow(
-      "quizzy",
-      questionLocation,
+      "audioVisualQuestion",
+      audioVisualQuestionLocation,
       {
         QN: i.toString()
       },
       {
         status: "unasked"
+      },
+      (succ, msg) => {
+        // succ - boolean, tells if the call is successful
+        console.log("Success: " + succ);
+        console.log("Message: " + msg);
+      }
+    );
+    db.updateRow(
+      "audioVisualQuestion",
+      audioVisualQuestionLocation,
+      {
+        QN: i.toString()
+      },
+      {
+        mediaSeen: false
       },
       (succ, msg) => {
         // succ - boolean, tells if the call is successful
@@ -214,7 +236,8 @@ function setPoints() {
 }
 
 function QN(id) {
-  window.location.href = "../question/areyouready.html?" + id;
+  window.location.href =
+    "audioVisualQuestion/audioVisualAreYouReady.html?" + id;
 }
 
 function reset() {
@@ -458,7 +481,7 @@ function convertGroupNumberToGroupName(groupNumberToBeConverted) {
   }
 }
 function backToMain() {
-  window.location.href = "../../mainPage/mainPage.html";
+  window.location.href = "../mainPage/mainPage.html";
 }
 function rules() {
   window.location.href = "rules.html";

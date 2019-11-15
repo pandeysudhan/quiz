@@ -7,7 +7,7 @@
       "C2": "What is you 1 second name?",
       "C3": "What is you 1 third name?",
       "C4": "What is you 1 fourth name?",
-      "status": "asked",
+      "status": "unasked",
       "finalAnswer": ""
     },
     {
@@ -27,7 +27,7 @@
       "C2": "What is you 3 second name?",
       "C3": "What is you 3 third name?",
       "C4": "What is you 3 fourth name?",
-      "status": "asked",
+      "status": "unasked",
       "finalAnswer": ""
     },
     {
